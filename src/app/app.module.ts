@@ -17,7 +17,6 @@ import { NgHttpLoaderModule } from 'ng-http-loader/ng-http-loader.module';
 import { MessageService } from 'primeng/components/common/messageservice';
 
 import { AppRoutingModule } from './app-routing.module';
-// import { TalentArchitectModule } from './modules/talentarchitect/talentarchitect.module';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/shared/components/auth/login.component';
