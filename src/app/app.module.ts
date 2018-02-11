@@ -20,11 +20,12 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/shared/components/auth/login.component';
+import { SessionHandoffSendComponent } from './modules/shared/components/sessionhandoff/sessionhandoffsend.component';
 
 import { UtilsService } from './modules/shared/services/utils.service';
 
 import { SharedModule, AuthGuardService, AuthService, PopupService } from 'kfhub_lib';
-import { TalentArchitectModule } from 'kfhub_tarc_lib';
+//import { TalentArchitectModule } from 'kfhub_tarc_lib';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, "./languages/", ".json");
@@ -50,11 +51,13 @@ export function HttpLoaderFactory(http: HttpClient) {
         AdvGrowlModule,
         AppRoutingModule,
         SharedModule,
-        TalentArchitectModule
+//        TalentArchitectModule
     ],
     declarations: [
         AppComponent,
-        LoginComponent    ],
+        LoginComponent,
+        SessionHandoffSendComponent
+    ],
     providers: [
         TranslateService,
         MessageService,

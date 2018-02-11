@@ -1,5 +1,5 @@
 {
-  "name": "ronnie-test-a4-app",
+  "name": "kfhub_app",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -28,7 +28,6 @@
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "kfhub_lib": "../kfhub_lib/dist/kfhub_lib-0.0.0.tgz",
-    "kfhub_tarc_lib": "../kfhub_tarc_lib/dist/kfhub_tarc_lib-0.0.0.tgz",
     "ng-http-loader": "^0.7.0",
     "ngx-modialog": "^5.0.0",
     "primeng": "^5.2.0",
