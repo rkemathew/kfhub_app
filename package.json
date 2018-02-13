@@ -6,6 +6,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod --build-optimizer",
+    "rebuild:lib": "bash scripts/rebuild_kfhub_lib.sh",
+    "rebuild:module": "bash scripts/rebuild_kfhub_module.sh",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -52,6 +54,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.1.2",
+    "scripty": "^1.7.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.3.2",
     "typescript": "~2.6.0"

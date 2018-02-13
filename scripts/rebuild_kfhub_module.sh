@@ -7,7 +7,8 @@ case $1 in
     cd dist
     npm pack
     cd $DIR
-    npm install kfhub_$1_lib --force
+    rm -rf ./node_modules/kfhub_$1_lib
+    npm install
     ;;
 
 *)
