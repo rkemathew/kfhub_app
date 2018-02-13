@@ -1,3 +1,0 @@
-localhost 
-proxy /tarc/ localhost:4210
-proxy / localhost:4200
