@@ -14,18 +14,16 @@ import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
 import { AdvGrowlModule } from 'primeng-advanced-growl';
 import { NgHttpLoaderModule } from 'ng-http-loader/ng-http-loader.module';
 
-import { MessageService } from 'primeng/components/common/messageservice';
-
 import { AppRoutingModule } from './app-routing.module';
 
+import { MessageService } from 'primeng/components/common/messageservice';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './modules/shared/components/auth/login.component';
-import { SessionHandoffSendComponent } from './modules/shared/components/sessionhandoff/sessionhandoffsend.component';
 
-import { UtilsService } from './modules/shared/services/utils.service';
+import { KFSharedModule, KFAuthGuardService, KFAuthService, KFPopupService, KFComponentsModule } from 'kfhub_lib';
+import { KFTarcTalentArchitectModule } from 'kfhub_tarc_lib';
 
-import { SharedModule, AuthGuardService, AuthService, PopupService } from 'kfhub_lib';
-//import { TalentArchitectModule } from 'kfhub_tarc_lib';
+import { LoginComponent } from './modules/components/auth/login.component';
+import { SPSearchComponent } from './modules/components/talentarchitect/search/spsearch.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, "./languages/", ".json");
@@ -50,21 +48,18 @@ export function HttpLoaderFactory(http: HttpClient) {
         BootstrapModalModule,
         AdvGrowlModule,
         AppRoutingModule,
-        SharedModule,
-//        TalentArchitectModule
+        KFSharedModule,
+        KFTarcTalentArchitectModule
     ],
     declarations: [
         AppComponent,
         LoginComponent,
-        SessionHandoffSendComponent
+        SPSearchComponent
     ],
     providers: [
         TranslateService,
         MessageService,
-        AuthGuardService,
-        AuthService,
-        PopupService,
-        UtilsService
+        KFPopupService
     ],
     bootstrap: [AppComponent]
 })

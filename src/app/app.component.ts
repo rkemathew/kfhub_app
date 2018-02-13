@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Spinkit } from 'ng-http-loader/spinkits';
 
-import { AuthService } from 'kfhub_lib';
-import { UtilsService } from './modules/shared/services/utils.service';
+import { KFAuthService, KFUtilsService } from 'kfhub_lib';
 
 @Component({
     selector: 'app-root',
@@ -15,8 +14,8 @@ export class AppComponent {
     
     constructor(
         private router: Router,
-        private authService: AuthService,
-        private utilsService: UtilsService
+        private authService: KFAuthService,
+        private utilsService: KFUtilsService
     ){};
 
     isAppPages(): boolean {
