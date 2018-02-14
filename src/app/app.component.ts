@@ -5,6 +5,9 @@ import { Spinkit } from 'ng-http-loader/spinkits';
 import { KFRoutesService, KFAuthService, KFUtilsService, KFMenuItem } from 'kfhub_lib';
 import { KFTarcRoutesService } from 'kfhub_tarc_lib';
 
+const INITIAL_ROUTE_PATH: string = 'tarc/sp/search';
+const DEFAULT_ROUTE_PATH: string = 'login';
+
 @Component({
     selector: 'app-root',
     templateUrl: 'app.component.html',
@@ -44,15 +47,20 @@ export class AppComponent implements OnInit {
     }
 
     getRoutes(): Route[] {
-        let routes: Route[] = [
-            { path: '', redirectTo: 'tarc/sp/search', pathMatch: 'full' },
-            { path: '**', redirectTo: 'login', pathMatch: 'full' }
-        ];
-
+        let routes: Route[] = [];
+        routes.push(this.getInitialRoute());
         this.getKFRoutes().forEach((route: Route) => routes.push(route));
         this.getKFTarcRoutes().forEach((route: Route) => routes.push(route));
-
+        routes.push(this.getDefaultRoute());
         return routes;
+    }
+
+    getInitialRoute(): Route {
+        return { path: '', redirectTo: INITIAL_ROUTE_PATH, pathMatch: 'full' };
+    }
+
+    getDefaultRoute(): Route {
+        return { path: '**', redirectTo: DEFAULT_ROUTE_PATH, pathMatch: 'full' };
     }
 
     getKFRoutes(): Route[] {
