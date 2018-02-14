@@ -22,9 +22,6 @@ import { AppComponent } from './app.component';
 import { KFSharedModule, KFAuthGuardService, KFAuthService, KFPopupService, KFComponentsModule } from 'kfhub_lib';
 import { KFTarcTalentArchitectModule } from 'kfhub_tarc_lib';
 
-import { LoginComponent } from './modules/components/auth/login.component';
-import { SPSearchComponent } from './modules/components/talentarchitect/search/spsearch.component';
-
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, "./languages/", ".json");
 }
@@ -52,9 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         KFTarcTalentArchitectModule
     ],
     declarations: [
-        AppComponent,
-        LoginComponent,
-        SPSearchComponent
+        AppComponent
     ],
     providers: [
         TranslateService,

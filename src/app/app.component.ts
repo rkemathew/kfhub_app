@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, Route } from '@angular/router';
 import { Spinkit } from 'ng-http-loader/spinkits';
 
-import { KFAuthService, KFUtilsService, KFMenuItem } from 'kfhub_lib';
+import { KFRoutesService, KFAuthService, KFUtilsService, KFMenuItem } from 'kfhub_lib';
+import { KFTarcRoutesService } from 'kfhub_tarc_lib';
 
 @Component({
     selector: 'app-root',
@@ -16,10 +17,17 @@ export class AppComponent implements OnInit {
     constructor(
         private router: Router,
         private authService: KFAuthService,
-        private utilsService: KFUtilsService
-    ){};
+        private utilsService: KFUtilsService,
+        private kfRoutesService: KFRoutesService,
+        private kftarcRoutesService: KFTarcRoutesService
+    ) {};
 
     ngOnInit() {
+        this.menuItems = this.getMenuItems();
+        this.router.resetConfig(this.getRoutes());
+    }
+
+    getMenuItems(): KFMenuItem[] {
         const pmSubMenuSP = new KFMenuItem('BCSuccessProfiles', 'tarc/sp/search');
         const pmSubMenuJD = new KFMenuItem('JobDescriptionsPageTitle', 'tarc/jd/search');
         const pmMainMenu = new KFMenuItem('Talent', 'tarc/sp/search', [ pmSubMenuSP, pmSubMenuJD ]);
@@ -32,8 +40,27 @@ export class AppComponent implements OnInit {
         const opSubMenuOrgSurveys = new KFMenuItem('Organization Surveys', 'orgp/orgsurvey/surveyslist');
         const opMainMenu = new KFMenuItem('OrganizationPerformance', 'orgp/pay/new', [ opSubMenuPay, opSubMenuOrgSetup, opSubMenuOrgSurveys ]);
 
-        const menuItems = [ pmMainMenu, taMainMenu, opMainMenu ];
-        this.menuItems = menuItems;
+        return [ pmMainMenu, taMainMenu, opMainMenu ];
+    }
+
+    getRoutes(): Route[] {
+        let routes: Route[] = [
+            { path: '', redirectTo: 'tarc/sp/search', pathMatch: 'full' },
+            { path: '**', redirectTo: 'login', pathMatch: 'full' }
+        ];
+
+        this.getKFRoutes().forEach((route: Route) => routes.push(route));
+        this.getKFTarcRoutes().forEach((route: Route) => routes.push(route));
+
+        return routes;
+    }
+
+    getKFRoutes(): Route[] {
+        return this.kfRoutesService.getRoutes();
+    }
+
+    getKFTarcRoutes(): Route[] {
+        return this.kftarcRoutesService.getRoutes();
     }
 
     isAppPages(): boolean {
