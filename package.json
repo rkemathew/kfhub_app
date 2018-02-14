@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod --build-optimizer",
-    "rebuild:lib": "bash scripts/rebuild_kfhub_lib.sh",
+    "rebuild:lib":    "bash scripts/rebuild_kfhub_lib.sh",
     "rebuild:module": "bash scripts/rebuild_kfhub_module.sh",
     "test": "ng test",
     "lint": "ng lint",
