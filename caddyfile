@@ -1,0 +1,7 @@
+localhost:3000
+proxy /app localhost:4200 {
+	transparent
+}
+proxy / localhost:8080 {
+	transparent
+}
