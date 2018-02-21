@@ -6,7 +6,7 @@ import { KFRoutesService, KFAuthService, KFUtilsService, KFMenuItem } from 'kfhu
 import { KFTarcRoutesService } from 'kfhub_tarc_lib';
 
 const INITIAL_ROUTE_PATH: string = 'tarc/sp/search';
-const DEFAULT_ROUTE_PATH: string = 'login';
+const DEFAULT_ROUTE_PATH: string = 'redirect';
 
 @Component({
     selector: 'app-root',
@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
 
     getRoutes(): Route[] {
         let routes: Route[] = [];
-        routes.push(this.getInitialRoute());
+//        routes.push(this.getInitialRoute());
         this.getKFRoutes().forEach((route: Route) => routes.push(route));
         this.getKFTarcRoutes().forEach((route: Route) => routes.push(route));
         routes.push(this.getDefaultRoute());
@@ -64,7 +64,9 @@ export class AppComponent implements OnInit {
     }
 
     getKFRoutes(): Route[] {
-        return this.kfRoutesService.getRoutes();
+        const kfRoutes: Route[] = this.kfRoutesService.getRoutes();
+        console.log('kfRoutes', kfRoutes);
+        return kfRoutes;
     }
 
     getKFTarcRoutes(): Route[] {
@@ -78,6 +80,6 @@ export class AppComponent implements OnInit {
     onLogout(event) {
         console.log('In onLogout event handler in App Component');
         this.authService.removeSessionInfo();
-        this.router.navigate(['/login']);
+        this.router.navigate([ DEFAULT_ROUTE_PATH ]);
     }
 }
